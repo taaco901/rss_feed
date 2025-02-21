@@ -1,6 +1,12 @@
 locals {
-  rss_feed = {
-    function_name = "test"
-    role_arn = "arn:aws:iam::729559450977:role/service-role/getS3Data-role-n73pmjhe"
+  lambda_settings = {
+    push_sns_topic = {
+      function_name = "rss-push-sns-topic-lambda"
+      role_arn      = data.terraform_remote_state.lambda_iam_role_arn.outputs.rss_feed_lambda_iam_arn
+    }
+    check_rss_feed = {
+      function_name = "rss-check-rss-feed-lambda"
+      role_arn      = data.terraform_remote_state.lambda_iam_role_arn.outputs.rss_feed_lambda_iam_arn
+    }
   }
 }

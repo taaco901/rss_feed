@@ -1,7 +1,9 @@
 module "rssfeed_lambda" {
-  source = "../../module/lambda"
+  source           = "../../module/lambda"
+  source_file_path = "D:\\AWS\\RSS\\rss_feed\\python\\main.zip"
 
-  role_arn = local.rss_feed.role_arn
-  function_name = local.rss_feed.function_name
+  for_each = { for lambda_settings in local.lambda_settings : lambda_settings.function_name => lambda_settings }
 
+  role_arn      = each.value.role_arn
+  function_name = each.value.function_name
 }
