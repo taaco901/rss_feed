@@ -24,12 +24,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r RSS_FEED/python/requirements.txt  # 修正したパス
+        pip install -r RSS_FEED/python/rss_check/requirements.txt  # 修正したパス
 
     # Lambda関数用のzipファイルを作成
     - name: Package Lambda function (rss_check.py)
       run: |
-        zip -r lambda_function.zip RSS_FEED/python/rss_check.py  # 修正したパス
+        zip -r lambda_function.zip RSS_FEED/python/rss_check/rss_check.py  # 修正したパス
 
     # AWS認証の設定（GitHub SecretsにAWS認証情報を設定しておく）
     - name: Configure AWS credentials
