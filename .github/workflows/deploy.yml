@@ -38,6 +38,11 @@ jobs:
         pip install --upgrade pip
         pip install -r requirements.txt  # rss_checkの依存関係をインストール
 
+    # ファイル名を変更して `lambda_function.py` にリネーム
+    - name: Rename rss_check.py to lambda_function.py
+      run: |
+        cd python/rss_check
+        mv rss_check.py lambda_function.py  # `rss_check.py` を `lambda_function.py` にリネーム
 
     # rss_check Lambda関数のパッケージングとデプロイ
     - name: Package and Deploy rss_check Lambda function

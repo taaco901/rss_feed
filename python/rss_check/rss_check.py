@@ -11,7 +11,7 @@ s3 = boto3.client('s3')
 SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:123456789012:rss-updates'  # ここは実際のSNSトピックARNに変更
 S3_BUCKET_NAME = 'your-s3-bucket-name'  # 使用するS3バケット名
 
-def lambda_hander(event, context):
+def lambda_handler(event, context):
     try:
         # Firestore から RSS URL を取得する部分 (仮定: S3 から取得)
         # ここでは S3 を使ってリストを管理する想定です
