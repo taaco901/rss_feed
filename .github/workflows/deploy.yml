@@ -44,6 +44,14 @@ jobs:
         cd python/rss_check
         mv rss_check.py lambda_function.py  # `rss_check.py` を `lambda_function.py` にリネーム
 
+    # 仮想環境内の依存関係を含めてZIPファイルを作成
+    - name: Package dependencies and lambda function
+      run: |
+        cd python/rss_check
+        zip -r lambda_function_rss_check.zip .  # `rss_check`のコードをZIPにまとめる
+        cd venv/lib/python3.12/site-packages  # 仮想環境の`site-packages`に移動
+        zip -r9 ${OLDPWD}/lambda_function_rss_check.zip .  # 仮想環境内の依存関係をZIPに追加
+
     # rss_check Lambda関数のパッケージングとデプロイ
     - name: Package and Deploy rss_check Lambda function
       run: |
