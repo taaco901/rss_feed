@@ -1,5 +1,5 @@
 variable "source_file_path" {
-  type = string
+  type    = string
   default = "C:\\Windows\\PJ\\rss_feed\\rss_feed\\python\\main.zip"
 }
 variable "function_name" {
@@ -8,12 +8,16 @@ variable "function_name" {
 variable "role_arn" {
   type = string
 }
+variable "layers" {
+  type    = list(string)
+  default = []
+}
 
 variable "time_out" {
-  type = number
+  type    = number
   default = 60
 }
 variable "memory_size" {
-  type = number
+  type    = number
   default = 128
 }

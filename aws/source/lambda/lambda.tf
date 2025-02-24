@@ -6,4 +6,5 @@ module "rssfeed_lambda" {
 
   role_arn      = each.value.role_arn
   function_name = each.value.function_name
+  layers        = each.value.layers
 }

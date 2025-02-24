@@ -8,6 +8,8 @@ resource "aws_lambda_function" "lambda" {
   timeout     = var.time_out
   memory_size = var.memory_size
 
+  layers = var.layers
+
   /*
   lifecycle {
     ignore_changes = [
