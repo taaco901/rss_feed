@@ -17,3 +17,9 @@ locals {
     })
   }
 }
+
+variable "email_address" {
+  description = "メールアドレス"
+  type        = string
+  sensitive   = true
+}

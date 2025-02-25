@@ -8,10 +8,14 @@ resource "aws_iam_role_policy_attachment" "rss_feed_lambda_iam_policy_attachment
   role       = module.rss_feed_lambda_iam_role.iam_role_name
 }
 resource "aws_iam_role_policy_attachment" "rss_feed_lambda_iam_policy_attachment_with_access_sns" {
-  policy_arn = module.CloudWatchAccess_policy.iam_policy_arn
+  policy_arn = module.accessSNS_policy.iam_policy_arn
   role       = module.rss_feed_lambda_iam_role.iam_role_name
 }
+resource "aws_iam_role_policy_attachment" "rss_feed_lambda_iam_policy_attachment_with_access_s3" {
+  policy_arn = module.accessS3_bucket.iam_policy_arn
+  role       = module.rss_feed_lambda_iam_role.iam_role_name
 
+}
 
 module "rss_sns_lambda_iam_role" {
   source             = "../../module/IAM_role"

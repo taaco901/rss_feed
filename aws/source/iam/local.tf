@@ -62,6 +62,26 @@ locals {
         ]
       })
     }
+    access_s3 = {
+      policy_name = "s3-lambda-policy"
+      policy = jsonencode({
+        Version = "2012-10-17",
+        Statement = [
+          {
+            Effect = "Allow",
+            Action = [
+              "s3:GetObject",
+              "s3:PutObject",
+              "s3:ListBucket"
+            ],
+            Resource = [
+              "${data.terraform_remote_state.s3_bucket.outputs.rss_feed_bucket_arn}/*",
+              "${data.terraform_remote_state.s3_bucket.outputs.rss_feed_bucket_arn}"
+            ]
+          }
+        ]
+      })
+    }
   }
 }
 
