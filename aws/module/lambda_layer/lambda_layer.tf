@@ -4,5 +4,9 @@ resource "aws_lambda_layer_version" "lambda_layer" {
   description         = var.layer_description
   compatible_runtimes = var.compatible_runtimes
 
+  source_code_hash = filesha256(var.layer_zip_path) # ZIPの変更を検知
 
+  lifecycle {
+    create_before_destroy = true # Layerの更新でダウンタイムを防ぐ
+  }
 }

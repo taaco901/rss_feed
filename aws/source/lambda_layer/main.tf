@@ -16,8 +16,9 @@ terraform {
 provider "aws" {
   default_tags {
     tags = {
-      system_name = "rss"
-      Project     = "rss"
+      awsApplication = "arn:aws:resource-groups:ap-northeast-1:729559450977:group/RSS_FEED/00uhs7sxokvxxyszh3576iirh4"
+      system_name    = "rss"
+      Project        = "rss"
     }
   }
 }

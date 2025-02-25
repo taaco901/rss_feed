@@ -12,6 +12,10 @@ variable "layers" {
   type    = list(string)
   default = []
 }
+variable "environment_variables" {
+  type    = map(string)
+  default = {}
+}
 
 variable "time_out" {
   type    = number

@@ -10,6 +10,10 @@ resource "aws_lambda_function" "lambda" {
 
   layers = var.layers
 
+  environment {
+    variables = var.environment_variables
+  }
+
   /*
   lifecycle {
     ignore_changes = [
