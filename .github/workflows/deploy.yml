@@ -32,7 +32,7 @@ jobs:
     # rss_check Lambda用仮想環境作成と依存関係インストール
     - name: Create virtualenv and install dependencies for rss_check
       run: |
-        cd python/rss_check
+        cd python/rss-check-rss-feed-lambda
         python -m venv venv  # 仮想環境を作成
         source venv/bin/activate
         pip install --upgrade pip
@@ -41,13 +41,13 @@ jobs:
     # ファイル名を変更して `lambda_function.py` にリネーム
     - name: Rename rss_check.py to lambda_function.py
       run: |
-        cd python/rss_check
+        cd python/rss-check-rss-feed-lambda
         mv rss_check.py lambda_function.py  # `rss_check.py` を `lambda_function.py` にリネーム
 
     # 仮想環境内の依存関係を含めてZIPファイルを作成
     - name: Package dependencies and lambda function
       run: |
-        cd python/rss_check
+        cd python/rss-check-rss-feed-lambda
         zip -r lambda_function_rss_check.zip .  # `rss_check`のコードをZIPにまとめる
         cd venv/lib/python3.12/site-packages  # 仮想環境の`site-packages`に移動
         zip -r9 ${OLDPWD}/lambda_function_rss_check.zip .  # 仮想環境内の依存関係をZIPに追加
@@ -55,7 +55,7 @@ jobs:
     # rss_check Lambda関数のパッケージングとデプロイ
     - name: Package and Deploy rss_check Lambda function
       run: |
-        cd python/rss_check
+        cd python/rss-check-rss-feed-lambda
         zip -r lambda_function_rss_check.zip .  # `rss_check`のZIP
         aws lambda update-function-code --function-name rss-check-rss-feed-lambda \
           --zip-file fileb://lambda_function_rss_check.zip  # Lambdaにデプロイ
