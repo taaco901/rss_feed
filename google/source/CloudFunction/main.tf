@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket = "rssfeed-terraform"
-    key    = "GCP/terraform_CloudScheduler.tfstate"
+    key    = "GCP/terraform_CloudFunction.tfstate"
     region = "ap-northeast-1"
   }
 }

@@ -3,6 +3,6 @@ locals {
     name        = "rss-fetch-scheduler"
     description = "rss-fetch-scheduler"
     schedule    = "0 9,18 * * *"
-    uri         = "https://google.com"
+    uri         = data.terraform_remote_state.cf_settings.outputs.checkRSSFeeds_url
   }
 }
