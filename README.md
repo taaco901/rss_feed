@@ -14,6 +14,6 @@
 
 # GCP
 ## 構成図
-
+![アーキテクチャ図](drawio/GCP_RSS.drawio.png)
 
 
