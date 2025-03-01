@@ -18,6 +18,10 @@ resource "google_cloudfunctions_function" "cf" {
   source_archive_bucket = google_storage_bucket.sb.name
   source_archive_object = google_storage_bucket_object.sbo.name
 
+  lifecycle {
+    ignore_changes = [source_archive_object] # ZIPファイルが変更されない限り関数を更新しない
+  }
+
   trigger_http = true
 }
 
